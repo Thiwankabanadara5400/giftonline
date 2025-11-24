@@ -1,0 +1,49 @@
+# GiftOfficial Project Setup - Quick Start
+
+## Project Location
+- Backend: D:\Giftofficial\backend
+- Frontend: D:\Giftofficial\frontend
+
+## Database Setup
+1. Ensure PostgreSQL is installed and running
+2. Create a database named 'giftofficial':
+   - Open pgAdmin or use: createdb -U postgres giftofficial
+3. Update .env files with your PostgreSQL credentials
+
+## Backend Setup
+1. Navigate to D:\Giftofficial\backend
+2. Run: npm install
+3. Run: npm run migrate
+4. Run: npm run dev
+   - Server will run on http://localhost:5000
+
+## Frontend Setup
+1. Navigate to D:\Giftofficial\frontend
+2. Run: npm install
+3. Run: npm run dev
+   - App will run on http://localhost:5173
+
+## API Endpoints
+- POST   /api/auth/register       - Register user
+- POST   /api/auth/login          - Login user
+- GET    /api/categories          - Get all categories
+- GET    /api/products            - Get all products
+- GET    /api/reviews             - Get all reviews
+- And more... (see PROJECT_MIGRATION_GUIDE.md)
+
+## Database Tables
+- users (id, name, email, password, role, timestamps)
+- categories (id, name, description, timestamps)
+- products (id, name, description, price, category_id, stock, image_url, timestamps)
+- reviews (id, product_id, user_id, rating, comment, timestamps)
+
+## Technology Stack
+- Backend: Node.js, Express, Knex, PostgreSQL
+- Frontend: React, Vite, React Router, Axios
+- Language: JavaScript (.js and .jsx files)
+
+## Important Notes
+- Database uses the same PostgreSQL as original project
+- All 100% same features from original project
+- Change JWT_SECRET in .env for production
+- Update database credentials in .env files
