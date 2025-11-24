@@ -5,9 +5,9 @@ services:
     image: postgres:15-alpine
     container_name: giftonline_db
     environment:
-      POSTGRES_DB: ${DB_NAME:-giftonline_prod}
-      POSTGRES_USER: ${DB_USER:-postgres}
-      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres123}
+      POSTGRES_DB: ${DB_NAME:-giftonline_db}
+      POSTGRES_USER: ${DB_USER:-giftonline_user}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-AzgR8$Zq}
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
@@ -27,15 +27,16 @@ services:
       dockerfile: Dockerfile
     container_name: giftonline_backend
     environment:
-      NODE_ENV: ${NODE_ENV:-production}
-      PORT: 3000
-      DB_HOST: postgres
-      DB_PORT: 5432
-      DB_NAME: ${DB_NAME:-giftonline_prod}
-      DB_USER: ${DB_USER:-postgres}
-      DB_PASSWORD: ${DB_PASSWORD:-postgres123}
-      JWT_SECRET: ${JWT_SECRET:-your_jwt_secret_change_in_production}
-      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost}
+      NODE_ENV: ${NODE_ENV:-development}
+      PORT: ${PORT:-3000}
+      DB_HOST: ${DB_HOST:-postgres}
+      DB_PORT: ${DB_PORT:-5432}
+      DB_NAME: ${DB_NAME:-giftonline_db}
+      DB_USER: ${DB_USER:-giftonline_user}
+      DB_PASSWORD: ${DB_PASSWORD:-AzgR8$Zq}
+      JWT_SECRET: ${JWT_SECRET:-MWJmYjNhYTgtNDg1OC00MWQzLTk0MjMtYTkwY2NjMDQ5ZGM1MzFiYTdkYjMtNzFjOS00MmE2LTk3NTUtZjg5NWE0OGU3YzFm}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-7d}
+      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:5173}
     ports:
       - "3000:3000"
     depends_on:
